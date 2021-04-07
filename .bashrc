@@ -45,7 +45,7 @@ white_hibk='\[\033[0;107m\]' # White
 #Replace any leading 0; with 4; to underline
 
 # Define a beautiful prompt
-export PS1="\[\033[1;35m\]\u\[\033[0m\]\[\033[1;34m\]@\h\[\033[0m\]:\[\033[1;34m\]\w\[\033[0m\] $ "
+export PS1="\[\033[1;35m\]\u\[\033[0m\]\[\033[1;34m\]@\h\[\033[0m\]:\[\033[1;34m\]\w\[\033[0m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] $ "
 
 # Define some aliases
 alias ls='ls -GF'

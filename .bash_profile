@@ -4,24 +4,11 @@ if [ -e ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-# Setting some env variables
-# ANT_HOME=/usr/local/apache-ant
-# export ANT_HOME
+PATH=$PATH:/usr/local/sbin/:/usr/local/opt/python/libexec/bin:${HOME}/.composer/vendor/bin:${HOME}/bin
 
-# JAVA7_HOME=`/usr/libexec/java_home -v 1.7`
-# JAVA8_HOME=`/usr/libexec/java_home -v 1.8`
-# export JAVA_HOME=$JAVA8_HOME
+export PATH
 
-#CATALINA_HOME=/Library/Tomcat
-#export CATALINA_HOME
-
-# PATH=$PATH:/opt/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/CMake.app/Contents/bin:$ANT_HOME/bin:$CATALINA_HOME/bin:${HOME}/.composer/vendor/bin:${HOME}/bin:/opt/Qt/5.4/clang_64/bin
-
-# PATH=$PATH:"/Applications/microchip/xc32/v1.34/bin"
-# PATH=$PATH:"/Applications/microchip/xc8/v1.34/bin"
-# PATH=$PATH:"/Applications/microchip/xc16/v1.24/bin"
-
-# export PATH
+export TMPDIR=/tmp
 
 # function changueJAVA_HOME {
 #   case "$1" in
@@ -37,3 +24,21 @@ fi
 #   esac
 # }
 
+alias gitlog='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+
+function ssh-docker {
+  if [ $# -ne 1 ]; then
+    echo "Usage: $FUNCNAME <docker container name>"
+    return 1
+  fi
+  container=$1
+  echo "docker container exec -it $container /bin/bash"
+  docker container exec -it $container /bin/bash
+}
+
+function clear-running-docker {
+  docker rm -vf $(docker ps -a -q)
+}

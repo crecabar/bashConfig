@@ -5,7 +5,7 @@ set backupdir=~/.backups       " custom backup directory
 set history=100                " keep 100 lines of command line history
 set ruler                      " show the cursor position all the time
 set showcmd                    " display incomplete commands
-set mouse=a                    " enable the mouse
+set mouse-=a                    " enable the mouse
 set lazyredraw                 " don't update the display while executing macros
 set showmode                   " so you know what mode you are in
 set laststatus=2               " always put a status line in.
